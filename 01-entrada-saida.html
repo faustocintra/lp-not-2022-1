@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrada e saída</title>
+    <script>
+        // Programa que pede dois números para o usuário
+        // e exibe a respectiva soma
+        
+        // Number() converte um valor de string para número
+        let num1 = Number(prompt('Informe o primeiro número:'))
+        let num2 = Number(prompt('Informe o segundo número:'))
+
+        if(isNaN(num1)) {
+            alert('ERRO: o primeiro número é inválido!')
+        }
+        else if(isNaN(num2)) {
+            alert('ERRO: o segundo número é inválido!')
+        }
+        else {
+            // Faz a conta e exibe o resultado
+            let soma = num1 + num2
+            alert('A soma dos dois números é ' + soma)
+        }
+
+        document.write('Tipo de num1: ' + (typeof num1))
+        document.write('<br>') // Pula linha
+        document.write('Tipo de num2: ' + (typeof num2))
+
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
