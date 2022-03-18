@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 05</title>
+    <script>
+        /*
+            Com a adoção das placas veiculares padrão Mercosul, o
+            segundo dígito das placas antigas precisa ser convertido
+            para uma letra, assim: 0 = A, 1 = B, 2 = C, ..., 9 = J.
+
+            Escreva um programa que solicite um dígito de 0 a 9 ao
+            usuário e retorne a ele qual a letra correspondente. Use
+            a estrutura switch..case.
+        */
+
+        let digito = parseInt(prompt('Informe o dígito de 0 a 9:'))
+        let letra
+
+        switch(digito) {
+            case 0:
+                letra = 'A'
+                break
+
+            case 1:
+                letra = 'B'
+                break
+
+            case 2:
+                letra = 'C'
+                break
+
+            case 3:
+                letra = 'D'
+                break
+
+            case 4:
+                letra = 'E'
+                break
+
+            case 5:
+                letra = 'F'
+                break
+
+            case 6:
+                letra = 'G'
+                break
+
+            case 7:
+                letra = 'H'
+                break
+
+            case 8:
+                letra = 'I'
+                break
+
+            case 9:
+                letra = 'J'
+                break
+
+            default:
+                alert('ERRO: dígito inválido!')
+        }
+
+        //document.write('A letra correspondente ao dígito ' + digito + ' é ' + letra + '.')
+        document.write(`A letra correspondente ao dígito ${digito} é ${letra}.`)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

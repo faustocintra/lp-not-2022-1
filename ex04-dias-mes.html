@@ -18,15 +18,33 @@
         */
 
         let mes = parseInt(prompt('Informe um número de mês (1-12):'))
+        
+        switch(mes) {
+            case 1:     // janeiro
+            case 3:     // março
+            case 5:     // maio
+            case 7:     // julho
+            case 8:     // agosto
+            case 10:    // outubro
+            case 12:    // dezembro
+                alert('O mês informado possui 31 dias.')
+                break
 
-        if(isNaN(mes) || mes < 1 || mes > 12) {
-            alert('ERRO: mês inválido!')
+            case 4:     // abril
+            case 6:     // junho
+            case 9:     // setembro
+            case 11:    // novembro
+                alert('O mês informado possui 30 dias.')
+                break
+
+            case 2:    // fevereiro
+                alert('O mês informado possui 28 dias (ou 29, em anos bissextos).')
+                break
+
+            default:
+                alert('ERRO: mês inválido!')
         }
-        else {
-            switch(mes) {
-                
-            }
-        }
+        
     </script>
 </head>
 <body>
