@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 03</title>
+    <script>
+        /*
+            Solicite ao usuário para informar dois números e um operador
+            matemático. Você usará três prompt(), um para cada número e
+            o terceiro para o operador.
+            Aceite os seguintes operadores:
+            + => adição
+            - => subtração
+            *, X ou x => multiplicação
+            / ou : => divisão
+            Efetue o cálculo apropriado de acordo com o operador informado
+            e informe o resultado usando document.write().
+        */
+
+        let num1 = Number(prompt('Informe o primeiro número:'))
+        let num2 = Number(prompt('Informe o segundo número:'))
+        let oper = prompt('Informe o operador (+, -, *, x, X, / ou :):')
+
+        if(isNaN(num1)) {   // 1ª saída
+            alert('ERRO: o primeiro número é inválido!')
+        }
+        else if(isNaN(num2)) {  // 2ª saída
+            alert('ERRO: o segundo número é inválido!')
+        }
+        else {
+            /* switch..case é uma estrutura que permite testar
+               uma única variável contra uma série de valores 
+               diferentes */
+            switch(oper) {
+                case '+':
+                    document.write(num1 + ' ' + oper + ' ' + num2 + ' é igual a ' + (num1 + num2))
+                    break
+
+                case '-':
+                    document.write(num1 + ' ' + oper + ' ' + num2 + ' é igual a ' + (num1 - num2))
+                    break
+
+                // Case NÃO admite o operador ||
+                case '*':
+                case 'x':
+                case 'X':
+                    document.write(num1 + ' ' + oper + ' ' + num2 + ' é igual a ' + (num1 * num2))
+                    break
+
+                case '/':
+                case ':':
+                    document.write(num1 + ' ' + oper + ' ' + num2 + ' é igual a ' + (num1 / num2))
+                    break
+
+                default:    // "else" do switch
+                    alert('ERRO: operador inválido!')
+            }
+        }
+        /*
+        else if(oper === '+') { // 3ª saída
+            document.write(num1 + ' ' + oper + ' ' + num2 + ' é igual a ' + (num1 + num2))
+        }
+        else if (oper === '-') { // 4ª saída
+            document.write(num1 + ' ' + oper + ' ' + num2 + ' é igual a ' + (num1 - num2))
+        }
+        else if(oper === '*' || oper === 'x' || oper === 'X') { // 5ª saída
+            document.write(num1 + ' ' + oper + ' ' + num2 + ' é igual a ' + (num1 * num2))
+        }
+        else if(oper === '/' || oper === ':') {  // 6ª saída
+            document.write(num1 + ' ' + oper + ' ' + num2 + ' é igual a ' + (num1 / num2))
+        }
+        else {  // 7ª saída
+            alert('ERRO: operador inválido!')
+        }*/
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
