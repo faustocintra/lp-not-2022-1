@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loop do..while</title>
+    <script>
+        // 2) Loop do..while
+
+        // Usando loop do..while para repetir a pergunta ao
+        // usuário até que a condição seja satisfeita
+        let ano
+
+        do {
+            ano = parseInt(prompt('Informe um ano >= 1582:'))
+        } while(isNaN(ano) || ano < 1582)
+
+        alert('OK, agora vou ver se o ano é bissexto.')
+
+        /*
+            Quantidade de execuções: INDETERMINADA
+            Garantia de execução: 1 (um)
+            Local de avaliação da condição: NO FINAL
+        */
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

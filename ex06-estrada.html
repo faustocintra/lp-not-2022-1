@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 06</title>
+    <script>
+        /*
+            A AUTOBURACON S/A é uma empresa de administração de rodovias.
+            Como um padrão da empresa, toda rodovia administrada com mais
+            de 200km de extensão possui um pedágio a cada 31km e um posto
+            de atendimento ao usuário a cada 23km.
+
+            Peça ao usuário para informar a extensão da rodovia, um número
+            inteiro maior que 200. Use do..while para repetir até obter uma
+            resposta correta.
+
+            Em seguida, usando o loop while, percorra os quilômetros da
+            rodovia e informe com document.write todos aqueles que têm
+            um pedágio ou um posto de atendimento ao usuário da AUTOBURACON
+            S/A.
+        */
+
+        let comprimento
+
+        do {
+            comprimento = parseInt(prompt('Informe o comprimento da estrada em km (201, no mínimo):'))
+        } while(isNaN(comprimento) || comprimento <= 200)
+
+        let km = 1, pedagios = 0, postos = 0
+
+        while(km <= comprimento) {
+
+            // Verificando se o quilômetro tem pedágio
+            if(km % 31 === 0) {
+                document.write(`Há um pedágio no km ${km}<br>`)
+                pedagios++
+            }
+
+            // Verificando se o quilômetro tem posto de atendimento ao usuário
+            if(km % 23 === 0) {
+                document.write(`Há um posto de atendimento ao usuário no km ${km}<br>`)
+                postos++
+            }
+
+            // Avança ao próximo quilômetro
+            //km = km + 1
+            //km += 1
+            km++
+        }
+
+        document.write(`<br>A estrada possui ${pedagios} pedágios e ${postos} postos de atendimento ao usuário.`)
+
+    </script>
+
+        
+</head>
+<body>
+    
+</body>
+</html>
