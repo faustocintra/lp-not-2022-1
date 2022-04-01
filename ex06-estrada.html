@@ -30,7 +30,8 @@
 
         let km = 1, pedagios = 0, postos = 0
 
-        while(km <= comprimento) {
+        // while(km <= comprimento) {
+        for(km = 1; km <= comprimento; km++) {
 
             // Verificando se o quilômetro tem pedágio
             if(km % 31 === 0) {
@@ -47,7 +48,7 @@
             // Avança ao próximo quilômetro
             //km = km + 1
             //km += 1
-            km++
+            //km++
         }
 
         document.write(`<br>A estrada possui ${pedagios} pedágios e ${postos} postos de atendimento ao usuário.`)

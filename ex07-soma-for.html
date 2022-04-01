@@ -26,6 +26,15 @@
         do {
             num2 = parseInt(prompt('Informe o segundo número, maior que o primeiro:'))
         } while(isNaN(num2) || num2 <= num1)
+
+        // Cálculo da soma
+        let soma = 0
+
+        for(let i = num1; i <= num2; i++) {
+            soma += i
+        }
+
+        alert(`A soma dos números do intervalo dado é ${soma}.`)
         
     </script>
 </head>
