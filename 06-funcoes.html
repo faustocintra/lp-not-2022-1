@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funções</title>
+    <script>
+
+        // Imagine que precisemos calcular o fatorial de dois
+        // números em código, sem precisar pedi-los ao usuário
+
+        let n1 = 8, n2 = 5
+
+        // Calculando o fatorial de n1
+        let fatorialN1 = 1
+        for(let t = n1; t >= 1; t--) {
+            fatorialN1 *= t
+        }
+
+        // Calculando o fatorial de n2
+        let fatorialN2 = 1
+        for(let t = n2; t >= 1; t--) {
+            fatorialN2 *= t
+        }
+
+        document.write(`${n1} é igual a ${fatorialN1}<br>`)
+        document.write(`${n2} é igual a ${fatorialN2}<br>`)
+
+        /*
+            FUNÇÕES são trechos de código que podem ser PARAMETRIZADOS
+            de forma a serem escritos apenas uma vez e utilizados várias
+            vezes.
+
+            O trabalho com uma função envolve duas etapas:
+            1) A DECLARAÇÃO da função: é feita uma única vez, e reserva
+               o trecho de código para utilização posterior.
+            2) A CHAMADA à função: pode ser feita várias vezes, e executa
+               efetivamente a função previamente declarada
+
+        */
+
+        // DECLARAÇÃO DE UMA FUNÇÃO QUE CALCULA O FATORIAL DE UM NÚMERO
+        // Aqui, n é um PARÂMETRO, e representa o número cujo fatorial
+        // será calculado
+        function calcFatorial(n) {
+            let fatorial = 1
+            for(let t = n; t >= 1; t--) {
+                fatorial *= t
+            }
+            // Uma função normalmente RETORNA um valor. Isso é
+            // feito com a palavra return
+            return fatorial
+        }
+
+        let fat4, fat5
+
+        // Chamadas à função
+        fat4 = calcFatorial(4)
+        fat5 = calcFatorial(5)
+
+        document.write(`4! é igual a ${fat4} (usando a função)<br>`)
+        document.write(`5! é igual a ${fat5} (usando a função)<br>`)
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

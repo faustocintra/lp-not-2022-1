@@ -14,6 +14,21 @@
             5! = 5 * 4 * 3 * 2 * 1
             7! = 7 * 6 * 5 * 4 * 3 * 2 * 1
         */
+
+        let num
+
+        do {
+            num = parseInt(prompt('Informe um número inteiro maior que 1:'))
+        } while(isNaN(num) || num <= 1)
+
+        let fatorial = 1
+
+        // For reverso
+        for(let x = num; x >= 1; x--) {
+            fatorial *= x
+        }
+
+        document.write(`${num}! é igual a ${fatorial}`)
     </script>
 </head>
 <body>
