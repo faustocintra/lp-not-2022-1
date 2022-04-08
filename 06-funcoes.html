@@ -62,6 +62,23 @@
         document.write(`4! é igual a ${fat4} (usando a função)<br>`)
         document.write(`5! é igual a ${fat5} (usando a função)<br>`)
 
+        // Função que recebe dois parâmetros (também chamados
+        // ARGUMENTOS)
+        function imc(peso, altura) {
+            // Cálculo do Índice de Massa Corpórea (IMC)
+            let resultado = peso / altura ** 2
+            return resultado
+        }
+
+        let imc1 = imc(85, 1.71)
+        let imc2 = imc(63, 1.57)
+        
+        // Chamadas à função
+
+        // toFixed() limita a quantidade de casas decimais 
+        document.write(`IMC para peso = 85, altura = 1.71: ${imc1.toFixed(4)}<br>`)
+        document.write(`IMC para peso = 63, altura = 1.57: ${imc2.toFixed(4)}<br>`)
+
     </script>
 </head>
 <body>

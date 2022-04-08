@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 10</title>
+    <script>
+        /*
+            Declare uma função que receba dois números e retorne o maior
+            entre eles.
+            Se os dois números forem iguais, retorne undefined.
+        */
+
+        // Declaração da função
+        function maior(a, b) {
+            // let resultado
+            if(a > b) {
+                // resultado = a
+                return a
+            }
+            else if(b > a) {
+                // resultado = b
+                return b
+            }
+            else {
+                // resultado = undefined
+                return undefined
+            }
+            // return resultado
+        }
+
+        // let maior1 = maior(65, 35)
+        // let maior2 = maior(7, 11)
+        // let maior3 = maior(19, 19)
+
+        // Chamadas à função
+        //document.write(`maior(65, 35) -> ${maior1}<br>`)
+        //document.write(`maior(7, 11) -> ${maior2}<br>`)
+        //document.write(`maior(19, 19) -> ${maior3}<br>`)
+
+        document.write(`maior(65, 35) -> ${maior(65, 35)}<br>`)
+        document.write(`maior(7, 11) -> ${maior(7, 11)}<br>`)
+        document.write(`maior(19, 19) -> ${maior(19, 19)}<br>`)
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
