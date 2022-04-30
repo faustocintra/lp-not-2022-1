@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROVA 1 (Turma 1)</title>
+</head>
+<script>
+    /*
+            2. Peça ao usuário para informar o número correspondente a um dos quilômetros da rodovia, um inteiro entre 1 e 400. Valide a entrada 
+            com do..while.
+            */
+    let km
+    do {
+        km = parseInt(prompt('Informe um quilômetro (1~400):'))
+    } while (isNaN(km) || km < 1 || km > 400)
+
+    /*
+        3. Em   seguida,   usando   uma   construção  if..else,   informe   ao   usuário, usando document.write(), se o km informado possui ou não pedágio.
+    */
+    if (km % 37 === 0) {
+        document.write('O quilômetro informado TEM pedágio.<br>')
+    } else {
+        document.write('O quilômetro informado não tem pedágio.<br>')
+    }
+    /*
+        4. Continuando, monte uma estrutura switch..case para verificar se no km informado há alguma das melhorias previstas e informar ao usuário, se for 
+        o caso. Se não houver nada,  informe  ‘Nada aqui. Siga em frente…’. 
+        Exiba  o resultado  do  switch..case usando document.write().
+    */
+    switch (km) {
+        case 97:
+        case 189:
+        case 282:
+        case 378:
+            document.write('No km informado há um posto de recarga para carros elétricos')
+            break
+
+        case 150:
+        case 350:
+            document.write('No km informado há um Posto da Polícia Rodoviária')
+            break
+
+        case 144:
+            document.write('No km informado há integração com trem ultrarrápido')
+            break
+
+        case 203:
+            document.write('No km informado há pernoite seguro para caminhoneiros')
+            break
+
+        case 310:
+            document.write('No km informado há um Shopping center')
+            break
+
+        case 354:
+            document.write('No km informado há um acesso a parque de diversões')
+            break
+
+        default:
+            document.write('Nada aqui. Siga em frente…')
+    }
+</script>
+
+<body>
+
+</body>
+
+</html>
