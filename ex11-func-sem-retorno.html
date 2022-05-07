@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 11</title>
+    <script>
+        /*
+            Peça ao usuário para que informe um número entre 1 e 100.
+            Peça também para que informe um caractere diferente de espaço vazio.
+            Use um prompt() para colher cada uma dessas informações.
+
+            Declare uma função que receba um número e um caractere e desenhe,
+            com document.write(), um traço do tamanho escolhido formado pelo
+            caractere passado.
+
+            Não se esqueça de fazer a chamada à sua função!
+        */
+
+        let num, carac
+
+        do {
+            num = parseInt(prompt('Informe um número entre 1 e 100:'))
+        } while(isNaN(num) || num < 1 || num > 100)
+
+        do {
+            carac = prompt('Informe um caractere diferente de espaço vazio:')
+        } while(carac === ' ')
+
+        // Declaração da função
+        function desenhar(quant, caractere) {
+            for(let i = 1; i <= quant; i++) {
+                document.write(caractere)
+            }
+            document.write('<br>')
+        }
+
+        // Chamada à função
+        desenhar(num, carac)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

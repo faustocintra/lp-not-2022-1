@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <h1>Estados da Região Sudeste</h1>
+
+    <!--
+        O atributo id deve ser ÚNICO (isto é, não pode
+        se repetir) dentro de um documento HTML
+    -->
+
+    <ol id="estados">
+        <li id="sp">São Paulo</li>
+        <li id="mg">Minas Gerais</li>
+        <li id="rj">Rio de Janeiro</li>
+        <li id="es">Espírito Santo</li>
+    </ol>
+    <script>
+        /*
+            Sempre que JS for usado para manipular HTML, a seção <script>
+            precisa vir no final, antes do </body>.
+            
+        */
+
+        /*
+            CAPTURA: processo de localizar um elemento HTML e referenciá-lo
+            em uma variável no JS
+        */
+        
+        // querySelector(): busca o PRIMEIRO elemento do tipo 
+        // especificado dentro do documento
+        let titulo = document.querySelector('h1')
+
+        // Mudando o texto do título h1
+        titulo.textContent = 'ESTADOS DO SUDESTE DO BRASIL'
+
+        // Capturando o primeiro item de lista
+        let item1 = document.querySelector('li')
+
+        // Mudando a cor do item 1
+        item1.style.color = 'red'
+
+        // querySelectorAll(): captura TODOS os elementos de 
+        // um tipo dentro de um vetor
+        
+        // Capturando todos os li
+        let todosItens = document.querySelectorAll('li')
+
+        // Mudando a cor do segundo item
+        todosItens[1].style.color = 'green'
+
+        // Colocando a fonte do terceiro item em itálico
+        todosItens[2].style.fontStyle = 'italic'
+
+        // Para capturar um elemento pelo seu id, temos
+        // duas opções:
+        // 1) querySelector('#id')
+        // 2) getElementById('id')
+
+        // Capturando o item correspondente ao estado do
+        // Espírito Santo com querySelector('#id')
+        let itemEs = document.querySelector('#es')
+
+        // Mudando a cor
+        itemEs.style.color = 'magenta'
+
+        // Capturando o item correspondente ao estado do
+        // Rio de Janeiro usando getElementById('id')
+        let itemRj = document.getElementById('rj')
+        
+        // Mudando a cor
+        itemRj.style.color = 'blue'
+
+        // Capturando a lista ordenada
+        let lista = document.querySelector('#estados')
+
+        // Alterando os marcadores da lista
+        lista.style.listStyleType = 'alpha'
+
+    </script>
+</body>
+</html>

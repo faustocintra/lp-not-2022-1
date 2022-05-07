@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funções 2</title>
+    <script>
+        /*
+            FUNÇÕES SEM RETORNO
+            São funções que desempenham alguma tarefa, mas não retornam
+            nenhum valor como resultado.
+            Tecnicamente, são chamadas procedimentos (procedures).
+        */
+
+        // Declaração da função
+        function passarTraco(tamanho) {
+            for(let i = 1; i <= tamanho; i++) {
+                document.write('-')
+            }
+            document.write('<br>')
+            // Funções sem retorno NÃO CONTÊM a palavra-chave return
+        }
+
+        // Chamadas à função - note que não atribuímos o retorno
+        // da função a uma variável, porque ela não retorna nada
+        passarTraco(75)
+        passarTraco(50)
+        let x = passarTraco(100)
+        alert(`O valor de x é ${x}`)
+
+        /*
+            FUNÇÃO SEM PARÂMETROS
+            Pode ocorrer de uma função não precisar de dados de entrada
+            para executar seu trabalho. Nesse caso, os parênteses que
+            envolvem os parâmetros permanecem, tanto na declaração quanto
+            na chamada à função 
+        */
+        function horaAtual() {
+            let agora = new Date()  // Obtém a data/hora atual do computador
+
+            // getHours(), getMinutes() e getSeconds() também são exemplos
+            // de funções sem parâmetros
+            return agora.getHours() + ':' + agora.getMinutes() + ':' + agora.getSeconds()
+        }
+
+        let hora = horaAtual()  // Chamada à função
+        document.write(`A hora atual é ${hora}<br>`)
+
+        /*
+            FUNÇÃO SEM PARÂMETRO E SEM RETORNO
+        */
+        function saudacao() {
+            let agora = new Date()
+            let hora = agora.getHours()
+
+            if(hora < 12) {
+                document.write('Bom dia!<br>')
+            }
+            else if(hora < 18) {
+                document.write('Boa tarde!<br>')
+            }
+            else {
+                document.write('Boa noite!<br>')
+            }
+        }
+
+        // Chamada à função
+        saudacao()
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
