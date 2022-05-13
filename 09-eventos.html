@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos</title>
+    <style>
+        #quadrado {
+            height: 200px;  /* altura */
+            width: 200px;   /* largura */
+            border: 3px solid navy;
+            background-color: cornflowerblue;
+            transition: background-color 1s;
+        }
+        #limpar {
+            visibility: hidden;   /* invisível */            
+        }
+    </style>
+</head>
+<body>
+    <!-- Isto é um comentário HTML -->
+    <div id="quadrado"></div>
+    <p id="mensagem"></p>
+    <button id="limpar">Limpar</button>
+
+    <div>
+        <label>Escreva seu nome:</label>
+        <input id="nome">
+    </div>
+
+    <script>
+        // Captura de elementos
+        let quad = document.querySelector('#quadrado')
+        // let quad = document.getElementById('quadrado')
+        let msg = document.querySelector('#mensagem')
+        let btnLimpar = document.getElementById('limpar')
+        let campoNome = document.getElementById('nome')
+
+        /*
+            Um EVENTO é algo que acontece com um elemento HTML. Podemos
+            interceptar o momento em que o evento acontece e disparar
+            uma ação, associando uma FUNÇÃO ao evento.
+
+            Por exemplo, podemos interceptar o momento em que o ponteiro
+            do mouse pairar sobre o quadrado e mudar a cor do quadrado.
+        */
+
+        // Função que altera a cor de fundo do quadrado para rosa
+        function mudaCorParaRosa() {
+            quad.style.backgroundColor = 'pink'
+        }
+
+        function mudaCorParaAzul() {
+            quad.style.backgroundColor = 'cornflowerblue'
+        }
+
+        function mensagemClicou() {
+            // Exibe a mensagem no parágrafo
+            msg.textContent = 'Você clicou no quadrado'
+            // Exibe o botão
+            btnLimpar.style.visibility = 'visible'
+        }
+
+        function limparMensagem() {
+            // Limpa a mensagem do parágrafo
+            msg.textContent = ''
+            // Esconde o botão
+            btnLimpar.style.visibility = 'hidden'
+        }
+
+        function exibirMaiusculas() {
+            // Exibe o nome digitado em maiúsculas
+            msg.textContent = campoNome.value.toUpperCase()
+        }
+
+        // Vamos interceptar o evento 'mouseenter', que ocorre quando o ponteiro
+        // do mouse paira sobre um elemento. Quando isso acontecer, vamos
+        // executar a função mudaCorParaRosa. Esse é um dos raros casos em que
+        // fazemos referência a uma função SEM usar os PARÊNTESES.
+        quad.addEventListener('mouseenter', mudaCorParaRosa)
+        quad.addEventListener('mouseleave', mudaCorParaAzul)
+        quad.addEventListener('click', mensagemClicou)
+
+        btnLimpar.addEventListener('click', limparMensagem)
+
+        // Vigia o evento 'soltura de tecla' do campo de texto
+        campoNome.addEventListener('keyup', exibirMaiusculas)
+
+    </script>
+</body>
+</html>
