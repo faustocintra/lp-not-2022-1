@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário DOM</title>
+    <style>
+        * { /* Todos os elementos */
+            font-family: Calibri, Arial, sans;
+        }
+        label {
+            display: block; /* Passa a ocupar a linha inteira */
+        }
+        div, fieldset {
+            /* border: 1px solid yellow; */
+            margin-bottom: 20px;    /* margem inferior */
+        }
+        /* Regra atinge só labels dentro de fieldsets */
+        fieldset label {    
+            display: inline;
+        }
+        #saudacao {
+            border: 3px solid navy;
+            padding: 10px; /* Espaçamento interno */
+            background-color: lightskyblue;
+            text-align: center;
+            border-radius: 10px;    /* Borda arredondada */
+        }
+    </style>
+</head>
+<body>
+    <h1>Gerador de saudação</h1>
+    <div>
+        <label for="primeiro-nome">Primeiro nome</label>
+        <input id="primeiro-nome">
+    </div>
+    <div>
+        <label for="sobrenome">Sobrenome</label>
+        <input id="sobrenome">
+    </div>
+    <div>
+        <label for="tratamento">Forma de tratamento</label>
+        <select id="tratamento">
+            <option>(Selecione)</option>
+            <option>Vossa Majestade</option>
+            <option>Excelentíssimo/a</option>
+            <option>Ilustríssimo/a</option>
+            <option>Vossa Senhoria</option>
+            <option>Senhor/ora</option>
+            <option>Cremosíssimo/a</option>
+        </select>
+    </div>
+    <fieldset>
+        <legend>Sexo</legend>
+        <!--
+            Inputs do tipo radio precisam ter o mesmo
+            name para que funcionem como um único conjunto
+            no qual apenas uma opção possa estar marcada ao
+            mesmo tempo.
+        -->
+        <input id="masculino" type="radio" name="sexo" checked>
+        <label for="masculino">Masculino</label>
+        <br>
+        <input id="feminino" type="radio" name="sexo">
+        <label for="feminino">Feminino</label>
+    </fieldset>
+    <div>
+        <label for="horario">Hora do dia</label>
+        <input id="horario" type="number" min="0" max="23">
+    </div>
+    <fieldset>
+        <legend>Opções de exibição</legend>
+        <input id="exibir-alert" type="checkbox">
+        <label for="exibir-alert">Exibir com alert()</label>
+        <br>
+        <input id="exibir-doc" type="checkbox">
+        <label for="exibir-doc">Exibir no documento</label>
+    </fieldset>
+    <div id="saudacao">
+        <!-- Aqui vai aparecer a saudação se a opção "Exibir no documento" 
+        estiver marcada -->
+    </div>
+    <div>
+        <button id="enviar">Enviar</button>
+    </div>
+
+    <!--
+        Primeiro nome: Maricota
+        Sobrenome: Catupirina
+        Forma de tratamento: Excelentíssimo/a
+        Sexo: Feminino
+        Hora do dia: 15
+        [X] Exibir com alert()
+        [X] Exibir no documento
+
+        Texto da saudação:
+        Boa tarde, Excelentíssima Maricota Catupirina! Como posso ser útil?
+    -->
+    <script>
+
+        // Capturar todos os elementos que têm id
+        let primeiroNome = document.querySelector('#primeiro-nome')
+        let sobrenome = document.getElementById('sobrenome')
+    </script>
+</body>
+</html>
