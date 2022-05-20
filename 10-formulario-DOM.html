@@ -101,7 +101,148 @@
 
         // Capturar todos os elementos que têm id
         let primeiroNome = document.querySelector('#primeiro-nome')
-        let sobrenome = document.getElementById('sobrenome')
+        let sobrenome = document.querySelector('#sobrenome')
+        let tratamento = document.querySelector('#tratamento')
+        let masculino = document.querySelector('#masculino')
+        let feminino = document.querySelector('#feminino')
+
+        let horario = document.getElementById('horario')
+        let exibirAlert = document.getElementById('exibir-alert')
+        let exibirDoc = document.getElementById('exibir-doc')
+        let saudacao = document.getElementById('saudacao')
+        let enviar = document.getElementById('enviar')
+
+        // Função de validação do formulário
+        function validar() {
+
+            // Primeiro nome
+            if(primeiroNome.value === '') {
+                alert('O primeiro nome precisa ser preenchido.')
+                primeiroNome.focus()
+                return false    // Formulário é inválido
+            }
+
+            // Sobrenome
+            if(sobrenome.value === '') {
+                alert('O sobrenome precisa ser preenchido.')
+                sobrenome.focus()
+                return false
+            }
+
+            // Forma de tratamento
+            if(tratamento.selectedIndex <= 0) {
+                alert('Selecione uma forma de tratamento.')
+                tratamento.focus()
+                return false
+            }
+
+            // Horário
+            let valHorario = parseInt(horario.value) // Garante que é numérico
+            if(isNaN(valHorario) || valHorario < 0 || valHorario > 23) {
+                alert('A hora do dia deve ser um valor entre 0 e 23.')
+                horario.focus()
+                return false
+            }
+
+            // Opções de exibição
+            let alertMarcado = exibirAlert.checked
+            let docMarcado = exibirDoc.checked
+            if(!alertMarcado && !docMarcado) {
+                alert('Pelo menos uma das opções de exibição deve estar marcada.')
+                exibirAlert.focus()
+                return false
+            }
+
+            // Se chegou até aqui, o formulário está válido
+            return true
+
+        }
+
+        function montarSaudacao() {
+            // Só monta a saudação se o formulário for válido
+            if(validar()) {
+
+                // Exemplo de texto de saudação
+                // Boa noite, Excelentíssima Maricota Catupirina! Como posso ser útil?
+                let textoSaudacao = ''
+                
+                // Verifica a hora do dia para determinar se começa com
+                // bom dia, boa tarde ou boa noite
+                if(horario.value < 12) {
+                    textoSaudacao = 'Bom dia, '
+                }
+                else if(horario.value < 18) {
+                    textoSaudacao = 'Boa tarde, '
+                }
+                else {
+                    textoSaudacao = 'Boa noite, '
+                }
+
+                // Decide qual forma de tratamento usar, considerando o
+                // sexo escolhido
+                switch(tratamento.selectedIndex) {
+                    case 1:
+                        textoSaudacao += 'Vossa Majestade '
+                        break
+                    case 2:
+                        if(masculino.checked) {
+                            textoSaudacao += 'Excelentíssimo '
+                        }
+                        else {
+                            textoSaudacao += 'Excelentíssima '
+                        }
+                        break
+                    case 3:
+                        if(masculino.checked) {
+                            textoSaudacao += 'Ilustríssimo '
+                        }
+                        else {
+                            textoSaudacao += 'Ilustríssima '
+                        }
+                        break
+                    case 4:
+                        textoSaudacao += 'Vossa Senhoria '
+                        break
+                    case 5:
+                        if(masculino.checked) {
+                            textoSaudacao += 'Senhor '
+                        }
+                        else {
+                            textoSaudacao += 'Senhora '
+                        }
+                        break
+                    default:
+                        if(masculino.checked) {
+                            textoSaudacao += 'Cremosíssimo '
+                        }
+                        else {
+                            textoSaudacao += 'Cremosíssima '
+                        }
+                }
+
+                // Adiciona o nome e o sobrenome
+                textoSaudacao += primeiroNome.value + ' '
+                textoSaudacao += sobrenome.value + ' '
+
+                // Adiciona o final da saudação
+                textoSaudacao += '! Como posso ser útil?'
+
+                // Exibe no alert(), se a opção correspondente estiver marcada
+                if(exibirAlert.checked) {
+                    alert(textoSaudacao)
+                    saudacao.textContent = ''
+                }
+
+                // Exibe na div do documento, se a opção correspondente estiver marcada
+                if(exibirDoc.checked) {''
+                    saudacao.textContent = textoSaudacao
+                }
+
+            }
+        }
+
+        // Associa a função validar ao clique do botão enviar
+        enviar.addEventListener('click', montarSaudacao)
     </script>
 </body>
 </html>
