@@ -58,6 +58,70 @@
             Entregar no Teams até o início da aula do próximo sábado (28/05).
             Esta atividade será considerada para a nota de participação.
         */
+
+        /* 1) Capturar todos os elementos com id */
+        let num1 = document.getElementById('num1')
+        let oper = document.getElementById('oper')
+        let num2 = document.querySelector('#num2')
+        let resultado = document.querySelector('#resultado')
+        let calcular = document.querySelector('#calcular')
+
+        // valNum1 e valNum2 são variáveis globais
+        let valNum1, valNum2
+
+        /* 2) Função de validação do formulário */
+        function validar() {
+
+            // Tenta transformar o valor dos inputs em números
+            valNum1 = parseFloat(num1.value)
+            valNum2 = parseFloat(num2.value)
+
+            // Validação de num1
+            if(isNaN(valNum1)) {
+                alert('Informe o primeiro número.')
+                num1.focus()
+                return false
+            }
+
+            // Validação de oper
+            if(oper.selectedIndex <= 0) {
+                alert('Selecione um operador.')
+                oper.focus()
+                return false
+            }
+
+            // Validação de num2
+            if(isNaN(valNum2)) {
+                alert('Informe o segundo número.')
+                num2.focus()
+                return false
+            }
+
+            return true
+
+        }
+
+        function efetuarCalculo() {
+            if(validar()) {
+                let res
+                switch(oper.selectedIndex) {
+                    case 1:
+                        res = valNum1 + valNum2
+                        break
+                    case 2:
+                        res = valNum1 - valNum2
+                        break
+                    case 3:
+                        res = valNum1 * valNum2
+                        break
+                    default:
+                        res = valNum1 / valNum2 
+                }
+                resultado.textContent = res
+            }
+        }
+
+        calcular.addEventListener('click', efetuarCalculo)
     </script>
 </body>
 </html>
