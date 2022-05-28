@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vetores</title>
+    <script>
+
+        /*********************************************************
+         * VETORES
+         * 
+         * - Vetores permitem que múltiplos valores sejam
+         *   armazenados em uma única variável
+         * - Os valores são armazenados em posições NUMERADAS,
+         *   sendo que a primeira posição recebe o número ZERO (0)        
+        **********************************************************/
+
+        // 1) Declarando um vetor vazio
+        let vetorVazio1 = []        // Forma moderna
+        let vetorVazio2 = Array()   // Forma tradicional
+
+        // 2) Declarando vetores já com valores
+        let numeros1 = [10, 20, 30, 40]
+        let numeros2 = Array(10, 20, 30, 40)
+        // Em ambos os casos, o valor 10 está na posição 0, o valor
+        // 20 está na posição 1, o valor 30 está na posição 2 e o
+        // valor 40 está na posição 3
+
+        // 3) Vetores podem armazenar qualquer tipo de dado, inclusive
+        // misturando-os em um mesmo vetor
+
+        // Vetor de strings
+        let frutas = ['banana', 'maçã', 'pera', 'uva', 'mamão', 'pêssego']
+
+        // Vetor de tipos diversos
+        let mix = ['Fulano de Tal', 23, 1.68, 65, false]
+
+        // 4) Acessando os elementos de um vetor
+
+        // A PRIMEIRA fruta está na posição ZERO (0)
+        document.write('Primeira fruta: ' + frutas[0] + '<br>')
+
+        // A QUARTA fruta está na posição TRÊS (3)
+        document.write('Quarta fruta: ' + frutas[3] + '<br>')
+
+        // 5) Descobrindo a quantidade de elementos de um vetor: length
+        document.write('Quantidade de frutas no vetor: ' + frutas.length + '<br>')
+
+        // 6) Exibindo a última fruta usando length - 1
+        document.write('Última fruta: ' + frutas[frutas.length - 1] + '<br>')
+
+        // 7) Acrescentando um novo elemento no final do vetor: push()
+        frutas.push('melancia')
+        
+        document.write('Quantidade de frutas no vetor: ' + frutas.length + '<br>')
+        document.write('Última fruta: ' + frutas[frutas.length - 1] + '<br>')
+
+        /**********************************************************************/
+        document.write('<hr>')  // Traço horizontal
+
+        let carros = []     // Vetor vazio
+
+        // Inserção no FINAL do vetor: push()
+        carros.push('Corcel')
+        document.write(carros + '<br>')
+
+        // push() é capaz de inserir vários elementos ao mesmo tempo
+        carros.push('Fusca', 'Belina')
+        document.write(carros + '<br>')
+
+        carros.push('Opala')
+        document.write(carros + '<br>')
+
+        // Inserção no INÍCIO do vetor: unshift()
+        carros.unshift('Chevette')
+        document.write(carros + '<br>')
+
+        // unshift() também é capaz de inserções múltiplas
+        carros.unshift('Maverick', 'Del Rey')
+        document.write(carros + '<br>')
+
+        // Inserção em posição INTERMEDIÁRIA: splice()
+        // Parâmetros:
+        // 1º: a posição de inserção
+        // 2º: quantos elementos serão removidos na posição? Para inserir,
+        //     passamos o valor 0 (zero)
+        // 3º: valor a ser inserido
+        carros.splice(4, 0, 'Variant')
+        document.write(carros + '<br>')
+
+        // splice() também é capaz de inserções múltiplas
+        carros.splice(2, 0, 'Kombi', 'Brasília')
+        document.write(carros + '<br>')
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
