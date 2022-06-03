@@ -93,6 +93,75 @@
         carros.splice(2, 0, 'Kombi', 'Brasília')
         document.write(carros + '<br>')
 
+        /***************************************************************/
+
+        document.write('<hr>')
+
+        // Remoção do FINAL do vetor: pop()
+        let removido = carros.pop()
+        document.write('Removido com pop(): ' + removido + '<br>')
+        document.write(carros + '<br>')
+        
+        // Remoção do INÍCIO do vetor: shift()
+        removido = carros.shift()
+        document.write('Removido com shift(): ' + removido + '<br>')
+        document.write(carros + '<br>')
+
+        // Remoção de posição intermediária: splice()
+        // Parâmetros:
+        // 1º: posição do elemento a ser removido
+        // 2º: quantidade de elementos a serem removidos
+        // Na remoção, splice() SEMPRE retorna um vetor
+        removido = carros.splice(3, 2)
+        document.write('Removidos com splice(): ' + removido + '<br>')
+        document.write('Primeiro removido: ' + removido[0] + '<br>')
+        document.write('Segundo removido: ' + removido[1] + '<br>')
+        document.write(carros + '<br>')
+
+        // splice() também pode ser utilizado para fazer substituições no vetor
+        // Parâmetros:
+        // 1º: posição do elemento a ser substituído
+        // 2º: quantidade de elementos a serem substituídos
+        // 3º: novos valores para a(s) posição(ões)
+        carros.splice(4, 1, 'Spazio')
+        document.write(carros + '<br>')
+
+        /***************************************************************
+         * PERCURSOS DE VETOR
+         * Percorrer um vetor significa visitar cada um dos elementos e
+         * fazer algo com ele. Isso normalmente é feito por meio de um
+         * loop for.
+         * ************************************************************/
+
+        document.write('<hr>')
+
+        // 1) PERCURSO CRESCENTE COM FOR TRADICIONAL
+        for(let x = 0; x < carros.length; x++) {
+            document.write('Posição ' + x + ': ' + carros[x] + '<br>')
+        }
+
+        document.write('<hr>')
+
+        // 2) PERCURSO DECRESCENTE COM FOR TRADICIONAL
+        for(let x = carros.length - 1; x >= 0; x--) {
+            // Usando string template para evitar concatenação de strings
+            document.write(`Posição ${x}: ${carros[x]}<br>`)
+        }
+
+        document.write('<hr>')
+
+        // 3) PERCURSO CRESCENTE USANDO FOR..OF
+        // Trata-se de um loop for simplificado, destinado a percorrer
+        // o vetor por inteiro em ordem crescente. Determina automaticamente
+        // a quantidade de iterações, de modo que não necessita de uma variável
+        // de controle
+        for(let c of carros) {
+            // Exibindo o nome do carro em letras maiúsculas
+            document.write(c.toUpperCase() + '<br>')
+            // Como não temos variável de controle, não temos
+            // como mostrar a posição do carro no vetor
+        }
+
     </script>
 </head>
 <body>
