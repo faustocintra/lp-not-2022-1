@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agência de Turismo VaiComFé™©®</title>
+    <style>
+        * {
+            font-family: Calibri, sans-serif;
+        }
+        body {
+            background-color:seagreen;
+        }
+        main {
+            background: #fefefe;
+            margin: 3%;
+            padding: 32px;
+            border-radius: 16px;
+        }
+        h1, p {
+            text-align: center;
+        }
+        .imagens {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .imagens figure {
+            width: 16%;
+            min-width: 150px;
+        }
+        .imagens figure img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25)
+        }
+        .imagens figure figcaption {
+            width: 100%;
+            text-align: center;
+            font-style: italic;
+        }
+        .campos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 0 20%;
+        }
+        .campos label {
+            display: block;
+        }
+        .botoeira {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .botoeira button {
+            font-size: 200%;
+        }
+        fieldset {
+            border: 1px solid seagreen;
+            border-radius: 16px;
+        }
+        fieldset legend {
+            text-align: center;
+        }
+        fieldset div {
+            text-align: center;
+            font-size: 200%;
+            font-weight: bold;
+        }
+        .resultado {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .resultado fieldset {
+            width: 30%;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Agência de Turismo VaiComFé™©®</h1>
+        <div class="imagens">
+            <figure>
+                <img src="imagens/fortaleza.jpg" alt="Fortaleza/CE">
+                <figcaption>Fortaleza/CE</figcaption>
+            </figure>
+            <figure>
+                <img src="imagens/maceio.jpg" alt="Maceió/AL">
+                <figcaption>Maceió/AL</figcaption>
+            </figure>
+            <figure>
+                <img src="imagens/natal.jpg" alt="Natal/RN">
+                <figcaption>Natal/RN</figcaption>
+            </figure>
+            <figure>
+                <img src="imagens/salvador.jpg" alt="Salvador/BA">
+                <figcaption>Salvador/BA</figcaption>
+            </figure>
+        </div>
+        <p>Informe seu signo e sua idade para concorrer a uma viagem para o Nordeste:</p>
+        <div class="campos">
+            <div>
+                <label for="signo">Signo</label>
+                <select id="signo">
+                    <option>(Selecione)</option>
+                    <option>Áries</option>      <!-- 1 -->
+                    <option>Touro</option>      <!-- 2 -->
+                    <option>Gêmeos</option>     <!-- 3 -->
+                    <option>Câncer</option>     <!-- 4 -->
+                    <option>Leão</option>       <!-- 5 -->
+                    <option>Virgem</option>     <!-- 6 -->
+                    <option>Libra</option>      <!-- 7 -->
+                    <option>Escorpião</option>  <!-- 8 -->
+                    <option>Sagitário</option>  <!-- 9 -->
+                    <option>Capricórnio</option><!-- 10 -->
+                    <option>Aquário</option>    <!-- 11 -->
+                    <option>Peixes</option>     <!-- 12 -->
+                </select>
+            </div>
+            <div>
+                <label for="idade">Idade</label>
+                <input id="idade" type="number" min="12" max="110">
+            </div>
+        </div>
+        <div class="botoeira">
+            <button id="calculo">Quero concorrer!</button>
+        </div>
+        <div class="resultado">
+            <fieldset>
+                <legend>Você está concorrendo a uma viagem para</legend>
+                <div id="destino"></div>
+            </fieldset>
+            <fieldset>
+                <legend>Nº de cupons</legend>
+                <div id="cupons"></div>
+            </fieldset>
+        </div>
+    </main>
+    
+    <script>
+
+        /*
+            2. Capture todos os elementos do HTML que têm id.
+        */
+        // Os elementos podem ser capturados tanto com querySelector() (usando #)
+        // quanto com getElementById().
+        let signo = document.querySelector('#signo')
+        let idade = document.querySelector('#idade')
+        let calculo = document.getElementById('calculo')
+        let destino = document.getElementById('destino')
+        let cupons = document.getElementById('cupons')
+
+        // Variável global para armazenar o valor da idade. Ela precisa ser global
+        // para poder ser acessada a partir de qualquer uma das duas funções abaixo.
+        let valIdade
+
+        /*
+            3. Declare a função para a validação dos campos. Atente-se à faixa de valores válidos
+            para a idade (12 a 110).
+        */
+        function validar() {
+            
+            if(signo.selectedIndex <= 0) {
+                alert('Selecione seu signo.')
+                signo.focus()
+                return false
+            }
+
+            valIdade = parseInt(idade.value)
+
+            if(isNaN(valIdade) || valIdade < 12 || valIdade > 110) {
+                alert('Idade inválida (deve estar entre 12 e 110).')
+                idade.focus()
+                return false
+            }
+
+            return true
+        }
+
+        /*
+            4. Declare a função que determinará a o destino e o número de cupons. Nela, faça uma
+            chamada à função declarada no item 3, para verificar se o formulário é válido.
+        */
+        function determinarDestino() {
+            if(validar()) {
+
+                /*
+                    5. Ainda dentro da função declarada no item 4, se o formulário for válido, use uma
+                    estrutura  switch..case  (com  cases vazios, se for o caso)  para processar o valor
+                    do elemento <select> e determinar qual o destino a que o usuário está concorrendo,
+                    com base no signo que indicou.
+                */
+                switch(signo.selectedIndex) {
+                    case 3:     // Gêmeos
+                    case 7:     // Libra
+                    case 11:    // Aquário
+                        destino.textContent = 'Salvador/BA'
+                        break
+                    
+                    case 4:     // Câncer
+                    case 8:     // Escorpião
+                    case 12:    // Peixes
+                        destino.textContent = 'Maceió/AL'
+                        break
+
+                    case 1:     // Áries
+                    case 5:     // Leão
+                    case 9:     // Sagitário
+                        destino.textContent = 'Natal/RN'
+                        break
+
+                    default:    // Demais signos: Touro, Virgem e Capricórnio
+                        destino.textContent = 'Fortaleza/CE'
+                }
+
+                /*
+                    Determine, também a quantidade de cupons a partir da idade informada.
+                    6. Escreva   nos   elemento   apropriados   (id=”destino”  e  id=”cupons”) os
+                    resultados encontrados no item 5.
+                */
+
+                if(valIdade >= 60) {
+                    cupons.textContent = '2'
+                }
+                else {
+                    cupons.textContent = '1'
+                }
+            }
+            
+        }
+
+        /*
+            7. Associe a função declarada no item 4 ao evento click do botão presente na página.
+        */
+        calculo.addEventListener('click', determinarDestino)
+
+    </script>
+</body>
+</html>

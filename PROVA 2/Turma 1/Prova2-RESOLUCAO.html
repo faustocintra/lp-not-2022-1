@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casas Brasileiras no Universo de Harry Potter</title>
+    <style>
+        * {
+            font-family: Calibri, sans-serif;
+        }
+        body {
+            background: #202020;
+        }
+        main {
+            background: #fefefe;
+            margin: 3%;
+            padding: 32px;
+            border-radius: 16px;
+        }
+        h1, p {
+            text-align: center;
+        }
+        .imagens {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .imagens figure {
+            width: 16%;
+            min-width: 150px;
+        }
+        .imagens figure img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25)
+        }
+        .imagens figure figcaption {
+            width: 100%;
+            text-align: center;
+            font-style: italic;
+        }
+        .campos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 0 20%;
+        }
+        .campos label {
+            display: block;
+        }
+        .botoeira {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .botoeira button {
+            font-size: 200%;
+        }
+        fieldset {
+            border: 1px solid #202020;
+            border-radius: 16px;
+        }
+        fieldset legend {
+            text-align: center;
+        }
+        fieldset div {
+            text-align: center;
+            font-size: 200%;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Casas Brasileiras no Universo de Harry Potter</h1>
+        <div class="imagens">
+            <figure>
+                <img src="imagens/gado-demais.jpg" alt="Casa Gado Demais">
+                <figcaption>Casa Gado Demais</figcaption>
+            </figure>
+            <figure>
+                <img src="imagens/galo-rinha.jpg" alt="Casa Galo de Rinha">
+                <figcaption>Casa Galo de Rinha</figcaption>
+            </figure>
+            <figure>
+                <img src="imagens/lacraste.jpg" alt="Casa Lacraste">
+                <figcaption>Casa Lacraste</figcaption>
+            </figure>
+            <figure>
+                <img src="imagens/smilinguido.jpg" alt="Casa Smilinguido">
+                <figcaption>Casa Smilinguido</figcaption>
+            </figure>
+        </div>
+        <p>Informe seu dia, mês e ano de nascimento para descobrir qual é a sua casa:</p>
+        <div class="campos">
+            <div>
+                <label for="dianasc">Dia de nascimento</label>
+                <input id="dianasc" type="number" min="1" max="31">
+            </div>
+            <div>
+                <label for="mesnasc">Mês de nascimento</label>
+                <input id="mesnasc" type="number" min="1" max="12">
+            </div>
+            <div>
+                <label for="anonasc">Ano de nascimento</label>
+                <input id="anonasc" type="number" min="1915" max="2022">
+            </div>            
+        </div>
+        <div class="botoeira">
+            <button id="vai">Vai!</button>
+        </div>
+        <fieldset>
+            <legend>Sua casa é</legend>
+            <div id="casa"></div>
+        </fieldset>
+    </main> 
+    
+    <script>
+        /* 2. Capture todos os elementos do HTML que têm id. */
+
+        // A captura pode ser feita tanto com querySelector() (usando #)
+        // ou com getElementById().
+        let diaNasc = document.getElementById('dianasc')
+        let mesNasc = document.getElementById('mesnasc')
+        let anoNasc = document.getElementById('anonasc')
+        let vai = document.querySelector('#vai')
+        let casa = document.querySelector('#casa')
+
+        // Variáveis globais para dia, mês e ano. Elas precisam ser globais
+        // para poderem ser usadas em ambas as funções abaixo.
+        let valDia, valMes, valAno
+
+        /*
+            3. Declare a função para a validação dos campos. Todos os três campos devem ter valores
+            numéricos inteiros. Atente-se à faixa de valores válidos para cada um dos campos: dia
+            (1 a 31), mês (1 a 12) e ano (1915 a 2022).
+        */
+
+        function validar() {
+            // (Tenta) converter os valores informados de dia, mês e ano para inteiros
+            valDia = parseInt(diaNasc.value)
+            valMes = parseInt(mesNasc.value)
+            valAno = parseInt(anoNasc.value)
+
+            if(isNaN(valDia) || valDia < 1 || valDia > 31) {
+                alert('Dia de nascimento inválido ou não informado.')
+                diaNasc.focus()
+                return false
+            }
+
+            if(isNaN(valMes) || valMes < 1 || valMes > 12) {
+                alert('Mês de nascimento inválido ou não informado.')
+                mesNasc.focus()
+                return false
+            }
+
+            if(isNaN(valAno) || valAno < 1915 || valAno > 2022) {
+                alert('Ano de nascimento inválido ou não informado.')
+                anoNasc.focus()
+                return false
+            }
+
+            return true
+        }
+
+        /*
+            4. Declare a função que determinará a casa. Nela, faça uma chamada à função declarada
+            no item 3, para verificar se o formulário é válido.
+        */
+        function determinarCasa() {
+            if(validar()) {
+                /*
+                    5. Ainda dentro da função declarada no item 4, se o formulário for válido, efetue o
+                    seguinte cálculo: some os valores do ano e do mês e multiplique a soma pelo valor do
+                    dia. Determine o resto da divisão do resultado obtido por 4. Esse será o resultado
+                    final do cálculo.
+                */
+                let temp = (valAno + valMes) * valDia
+                let resultado = temp % 4
+
+                /*
+                    6. Em seguida, utilize uma estrutura switch..case para analisar o resultado final 
+                    do cálculo efetuado no item 5. Escreva no elemento apropriado (id=”casa”) um dos
+                    seguintes valores:
+                */
+                switch(resultado) {
+                    case 0:
+                        casa.textContent = 'Casa Gado Demais'
+                        break
+                    case 1:
+                        casa.textContent = 'Casa Galo de Rinha'
+                        break
+                    case 2:
+                        casa.textContent = 'Casa Lacraste'
+                        break
+                    default:    // ou: case 3:
+                        casa.textContent = 'Casa Smilinguido'
+                }
+            }
+        }
+
+        /*
+            7. Associe a função declarada no item 4 ao evento click do botão presente na página.
+        */
+        vai.addEventListener('click', determinarCasa)
+        
+    </script>
+</body>
+</html>
