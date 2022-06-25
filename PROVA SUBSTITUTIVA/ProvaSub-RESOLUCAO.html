@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casas Brasileiras no Universo de Harry Potter</title>
+    <style>
+        * {
+            font-family: Calibri, sans-serif;
+        }
+
+        body {
+            background: indigo;
+        }
+
+        main {
+            background: #fefefe;
+            margin: 3%;
+            padding: 32px;
+            border-radius: 16px;
+        }
+
+        h1,
+        p {
+            text-align: center;
+        }
+
+        h1 {
+            color: indigo;
+        }
+
+        .campos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 0 20%;
+        }
+
+        .campos label {
+            display: block;
+        }
+
+        .botoeira {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .botoeira button {
+            font-size: 200%;
+        }
+
+        fieldset {
+            border: 1px solid #202020;
+            border-radius: 16px;
+        }
+
+        fieldset legend {
+            text-align: center;
+        }
+
+        fieldset div {
+            text-align: center;
+            font-size: 200%;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1></h1>
+
+        <p></p>
+        <div class="campos">
+            <div>
+                <label for="temp">Temperatura</label>
+                <input id="temp" type="number">
+            </div>
+            <div>
+                <label for="direc">Sentido da conversão</label>
+                <select id="direc">
+                    <option>(Selecione)</option>
+                    <option>De Celsius (°C) para Fahrenheit (°F)</option>
+                    <option>De Fahrenheit (°F) para Celsius (°C)</option>
+                </select>
+            </div>
+        </div>
+        <div class="botoeira">
+            <button id="converter">Converter</button>
+        </div>
+        <fieldset>
+            <legend>Resultado</legend>
+            <div id="resultado"></div>
+        </fieldset>
+    </main>
+
+    <script>
+
+        let textos = [
+            'Conversor de temperaturas',
+            'Informe a temperatura e o sentido para efetuar a conversão.'
+        ]
+
+        /*
+            2. Capture todos os elementos do HTML que têm id.
+        */
+        let direc = document.querySelector('#direc')
+        let temp = document.getElementById('temp')
+        let converter = document.querySelector('#converter')
+        let resultado = document.getElementById('resultado')
+
+        /*
+            3. Capture, sem usar id, o título de nível 1 e o parágrafo existentes no documento. Sem 
+               usar cópia e colagem, atribua: 
+               ◦ ao conteúdo do título de nível 1, o primeiro elemento do vetor já existente no código.
+               ◦ ao conteúdo do parágrafo, o segundo elemento do vetor já existente no código.
+        */
+        let titulo = document.querySelector('h1')
+        let parag = document.querySelector('p')
+
+        titulo.textContent = textos[0]
+        parag.textContent = textos[1]
+
+        let valTemp // Variável global para armazenar a temperatura convertida
+
+        /*
+            4. Declare a função para a validação dos campos. O campo relativo à temperatura deve 
+               ter um valor numérico, que pode ser fracionário.
+        */
+        function validar() {
+
+            valTemp = parseFloat(temp.value)    // Aceita valor fracionário
+
+            // Validação da temperatura
+            if (isNaN(valTemp)) {
+                alert('Temperatura inválida ou não informada.')
+                temp.focus()
+                return false
+            }
+
+            // Validação do sentido de conversão
+            if (direc.selectedIndex <= 0) {
+                alert('Escolha um sentido para a conversão.')
+                direc.focus()
+                return false
+            }
+
+            return true
+
+        }
+
+        /*
+            5. Declare a função que fará a conversão entre as escalas de temperatura. Nela, faça uma 
+               chamada à função declarada no item 4, para verificar se o formulário é válido.
+        */
+        function convTemperatura() {
+
+            if (validar()) {
+
+                let tempConvertida
+
+                /*
+                    6. Ainda dentro da função declarada no item 5, se o formulário for válido, efetue 
+                       o cálculo de conversão segundo as fórmulas.
+                */
+
+                // Switch para decidir o sentido da conversão
+                switch (direc.selectedIndex) {
+
+                    case 1:     // Celsius para Fahrenheit
+                        tempConvertida = (1.8 * valTemp) + 32
+                        break
+                    default:    // ou: case 2: // Fahrenheit para Celsius
+                        tempConvertida = (valTemp - 32) / 1.8
+                        break
+                }
+
+                /*
+                    7. Por fim, exiba o resultado encontrado no elemento reservado para esse propósito.
+                */
+                resultado.textContent = tempConvertida
+            }
+        }
+
+        /*
+            8. Associe a função declarada no item 5 ao evento click do botão presente na página.
+        */
+        converter.addEventListener('click', convTemperatura)
+
+    </script>
+</body>
+
+</html>
